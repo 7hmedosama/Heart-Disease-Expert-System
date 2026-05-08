@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --border: #e2e8f0;
+    --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    --radius: 22px;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.08), transparent 25%),
+        var(--bg);
+    min-height: 100vh;
+    padding: 24px;
+    color: var(--text);
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.7);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 45%, #0ea5e9 100%);
+    color: white;
+    padding: 42px 24px;
+    text-align: center;
+    position: relative;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+    pointer-events: none;
+}
+
+.header h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    padding: 28px;
+}
+
+@media (max-width: 980px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-section,
+.results-section,
+.error-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.form-section {
+    padding: 24px;
+}
+
+.form-section h2,
+.results-section h2 {
+    color: var(--text);
+    margin-bottom: 18px;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    font-size: 0.98rem;
+    background: #fff;
+    color: var(--text);
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #cbd5e1;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    transform: translateY(-1px);
+}
+
+.btn-submit,
+.btn-reset {
+    width: 100%;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-submit {
+    margin-top: 10px;
+    background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+    color: white;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(37, 99, 235, 0.3);
+}
+
+.btn-reset {
+    background: #e2e8f0;
+    color: var(--text);
+}
+
+.btn-reset:hover {
+    background: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.results-section {
+    padding: 24px;
+}
+
+.result-box {
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    background: #f8fafc;
+}
+
+.result-box.disease {
+    background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+    border-color: #fecdd3;
+}
+
+.result-box.no-disease {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border-color: #a7f3d0;
+}
+
+.result-box h3 {
+    font-size: 1.45rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.diagnosis-text {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.probability-section,
+.rules-section,
+.accuracy-section {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+}
+
+.results-section h3 {
+    color: var(--text);
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.probability-item {
+    display: grid;
+    grid-template-columns: 150px 1fr 70px;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.probability-item label {
+    margin: 0;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.bar-container {
+    height: 14px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #2563eb, #0ea5e9);
+    transition: width 0.5s ease;
+}
+
+.bar-fill.no-disease {
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+
+.probability-item span {
+    text-align: right;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.rules-section ul {
+    list-style: none;
+}
+
+.rules-section li {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.rules-section li:last-child {
+    border-bottom: none;
+}
+
+.rules-section li:before {
+    content: "•";
+    color: var(--primary);
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+.accuracy-section p {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.error-section {
+    grid-column: 2;
+    padding: 22px;
+    border-left: 5px solid #ef4444;
+    background: #fff1f2;
+}
+
+.footer {
+    background: #f8fafc;
+    padding: 18px;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .content {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .form-section,
+    .results-section,
+    .error-section {
+        padding: 18px;
+    }
+
+    .probability-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .probability-item span {
+        text-align: left;
+    }
+}
